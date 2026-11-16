@@ -1,2 +1,6 @@
 *.vsix
 .vscode/**
+.gitignore
+media/demo-*.gif
+media/config*.png
+media/menu.png

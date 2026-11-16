@@ -1,8 +1,8 @@
 {
 	"name": "claude-gpt-commit-message",
-	"displayName": "Claude GPT Commit Message",
+	"displayName": "AI Commit Message (Claude/GPT)",
 	"description": "Gera mensagens de commit pelo Claude Code (Claude) ou pelo Codex (GPT) instalados, sem chave de API",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"publisher": "flaviowagner",
 	"author": {
 		"name": "Flávio Wagner"
@@ -32,7 +32,7 @@
 		"vscode": "^1.90.0"
 	},
 	"categories": [
-		"SCM Providers",
+		"AI",
 		"Other"
 	],
 	"activationEvents": [],
@@ -42,7 +42,7 @@
 			{
 				"command": "claudeGptCommit.generate",
 				"title": "Gerar mensagem de commit (Claude/GPT)",
-				"category": "Claude GPT Commit",
+				"category": "AI Commit",
 				"icon": {
 					"light": "media/commit-ai-light.svg",
 					"dark": "media/commit-ai-dark.svg"
@@ -51,13 +51,13 @@
 			{
 				"command": "claudeGptCommit.openSettings",
 				"title": "Configurações",
-				"category": "Claude GPT Commit",
+				"category": "AI Commit",
 				"icon": "$(settings-gear)"
 			},
 			{
 				"command": "claudeGptCommit.selectProvider",
 				"title": "Escolher IA (Claude ou GPT)",
-				"category": "Claude GPT Commit"
+				"category": "AI Commit"
 			}
 		],
 		"menus": {
@@ -80,7 +80,7 @@
 			]
 		},
 		"configuration": {
-			"title": "Claude GPT Commit Message",
+			"title": "AI Commit Message (Claude/GPT)",
 			"properties": {
 				"claudeGptCommit.provider": {
 					"type": "string",

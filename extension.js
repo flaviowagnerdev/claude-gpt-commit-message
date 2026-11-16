@@ -191,7 +191,7 @@ async function generate(arg) {
 		repo.inputBox.value = final;
 	} catch (e) {
 		if (e && e.message === 'Cancelado.') { return; }
-		vscode.window.showErrorMessage(`Claude GPT Commit: ${e.message}`);
+		vscode.window.showErrorMessage(`AI Commit: ${e.message}`);
 	}
 }
 
@@ -204,7 +204,7 @@ async function selectProvider() {
 	);
 	if (!sel) { return; }
 	await cfg.update('provider', sel.id, vscode.ConfigurationTarget.Global);
-	vscode.window.showInformationMessage(`Claude GPT Commit: usando ${sel.label}.`);
+	vscode.window.showInformationMessage(`AI Commit: usando ${sel.label}.`);
 }
 
 // ---------------- Tela de configurações ----------------
@@ -251,7 +251,7 @@ let panel;
 
 function openSettings(context) {
 	if (panel) { panel.reveal(); return; }
-	panel = vscode.window.createWebviewPanel('claudeGptCommitSettings', 'Claude GPT Commit: Configurações', vscode.ViewColumn.Active, { enableScripts: true });
+	panel = vscode.window.createWebviewPanel('claudeGptCommitSettings', 'AI Commit: Configurações', vscode.ViewColumn.Active, { enableScripts: true });
 	panel.iconPath = vscode.Uri.joinPath(context.extensionUri, 'media', 'icon.png');
 	panel.webview.html = settingsHtml(panel.webview);
 	panel.onDidDispose(() => { panel = undefined; });
@@ -322,7 +322,7 @@ function settingsHtml(webview) {
 </style>
 </head>
 <body>
-	<h1>Claude GPT Commit Message</h1>
+	<h1>AI Commit Message (Claude/GPT)</h1>
 	<p class="sub">Escolha a IA, o modelo, os limites de tokens e as instruções usadas para gerar a mensagem de commit.</p>
 
 	<fieldset>
@@ -379,7 +379,7 @@ function settingsHtml(webview) {
 	</div>
 	<pre id="result" class="hidden"></pre>
 
-	<p class="footer">Claude GPT Commit Message · desenvolvido por Flávio Wagner</p>
+	<p class="footer">AI Commit Message (Claude/GPT) · desenvolvido por Flávio Wagner</p>
 
 <script nonce="${nonce}">
 	const vscode = acquireVsCodeApi();

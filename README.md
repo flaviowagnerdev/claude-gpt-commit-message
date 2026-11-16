@@ -1,4 +1,4 @@
-# Claude GPT Commit Message
+# AI Commit Message (Claude/GPT)
 
 Gere a mensagem de commit com um clique no painel **Source Control** do VS Code, usando o **Claude** (Claude Code CLI) ou o **GPT** (OpenAI Codex CLI) que já estão instalados e logados na sua máquina.
 
@@ -28,7 +28,7 @@ A extensão **nunca faz commit sozinha**: ela só escreve a mensagem.
 
 ## Configurações
 
-Abra pelo menu **"..."** do painel Source Control → **Configurações**, ou pela paleta de comandos (`Ctrl+Shift+P`) → **Claude GPT Commit: Configurações**.
+Abra pelo menu **"..."** do painel Source Control → **Configurações**, ou pela paleta de comandos (`Ctrl+Shift+P`) → **AI Commit: Configurações**.
 
 ![Menu do Source Control com as opções da extensão](media/menu.png)
 
@@ -91,7 +91,15 @@ O Codex roda em modo somente leitura e sem salvar sessão. O Claude roda sem fer
 
 ---
 
-## Instalação a partir do código
+## Instalação
+
+**Pelo Marketplace:** na aba Extensões do VS Code (`Ctrl+Shift+X`), busque **AI Commit Message (Claude/GPT)** e clique em **Install**. Ou rode:
+
+```
+code --install-extension flaviowagner.claude-gpt-commit-message
+```
+
+**A partir do código:**
 
 ```
 npx --yes @vscode/vsce package
@@ -105,3 +113,5 @@ code --install-extension claude-gpt-commit-message-<versão>.vsix
 Sugestões e problemas: [issues](https://github.com/flaviowagnerdev/claude-gpt-commit-message/issues).
 
 Licença MIT.
+
+*Extensão independente, sem vínculo com a Anthropic ou a OpenAI. Claude é marca da Anthropic; GPT e Codex são marcas da OpenAI.*
