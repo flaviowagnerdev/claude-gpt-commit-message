@@ -1,0 +1,153 @@
+{
+	"name": "claude-gpt-commit-message",
+	"displayName": "Claude GPT Commit Message",
+	"description": "Gera mensagens de commit pelo Claude Code (Claude) ou pelo Codex (GPT) instalados, sem chave de API",
+	"version": "1.1.0",
+	"publisher": "flaviowagner",
+	"author": {
+		"name": "Flávio Wagner"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/flaviowagnerdev/claude-gpt-commit-message"
+	},
+	"homepage": "https://github.com/flaviowagnerdev/claude-gpt-commit-message#readme",
+	"bugs": {
+		"url": "https://github.com/flaviowagnerdev/claude-gpt-commit-message/issues"
+	},
+	"keywords": [
+		"git",
+		"commit",
+		"commit message",
+		"conventional commits",
+		"claude",
+		"claude code",
+		"gpt",
+		"codex",
+		"ai"
+	],
+	"icon": "media/icon.png",
+	"engines": {
+		"vscode": "^1.90.0"
+	},
+	"categories": [
+		"SCM Providers",
+		"Other"
+	],
+	"activationEvents": [],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "claudeGptCommit.generate",
+				"title": "Gerar mensagem de commit (Claude/GPT)",
+				"category": "Claude GPT Commit",
+				"icon": {
+					"light": "media/commit-ai-light.svg",
+					"dark": "media/commit-ai-dark.svg"
+				}
+			},
+			{
+				"command": "claudeGptCommit.openSettings",
+				"title": "Configurações",
+				"category": "Claude GPT Commit",
+				"icon": "$(settings-gear)"
+			},
+			{
+				"command": "claudeGptCommit.selectProvider",
+				"title": "Escolher IA (Claude ou GPT)",
+				"category": "Claude GPT Commit"
+			}
+		],
+		"menus": {
+			"scm/title": [
+				{
+					"command": "claudeGptCommit.generate",
+					"when": "scmProvider == git",
+					"group": "navigation"
+				},
+				{
+					"command": "claudeGptCommit.selectProvider",
+					"when": "scmProvider == git",
+					"group": "claudeGptCommit@1"
+				},
+				{
+					"command": "claudeGptCommit.openSettings",
+					"when": "scmProvider == git",
+					"group": "claudeGptCommit@2"
+				}
+			]
+		},
+		"configuration": {
+			"title": "Claude GPT Commit Message",
+			"properties": {
+				"claudeGptCommit.provider": {
+					"type": "string",
+					"enum": [
+						"claude",
+						"codex"
+					],
+					"enumDescriptions": [
+						"Claude Code CLI (claude -p), usa o login/assinatura do Claude",
+						"OpenAI Codex CLI (codex exec), usa o login do ChatGPT"
+					],
+					"default": "claude",
+					"order": 1,
+					"description": "IA usada para gerar a mensagem de commit"
+				},
+				"claudeGptCommit.claude.model": {
+					"type": "string",
+					"default": "haiku",
+					"order": 2,
+					"description": "Modelo do Claude (ex.: haiku, sonnet, opus ou um ID completo). Vazio usa o padrão do Claude Code"
+				},
+				"claudeGptCommit.codex.model": {
+					"type": "string",
+					"default": "",
+					"order": 3,
+					"description": "Modelo do GPT no Codex. Vazio usa o padrão do ~/.codex/config.toml"
+				},
+				"claudeGptCommit.maxOutputTokens": {
+					"type": "number",
+					"default": 1000,
+					"minimum": 50,
+					"order": 4,
+					"description": "Máximo de tokens da resposta. Aplicado no Claude; o Codex CLI não oferece esse limite"
+				},
+				"claudeGptCommit.maxInputTokens": {
+					"type": "number",
+					"default": 30000,
+					"minimum": 500,
+					"order": 5,
+					"description": "Máximo aproximado de tokens do diff enviado (≈ 4 caracteres por token); o excedente é cortado"
+				},
+				"claudeGptCommit.systemPrompt": {
+					"type": "string",
+					"default": "",
+					"editPresentation": "multilineText",
+					"order": 6,
+					"description": "System prompt (instruções para a IA). Vazio usa o prompt padrão (Conventional Commits em pt-BR). O diff é anexado depois dele"
+				},
+				"claudeGptCommit.timeoutSeconds": {
+					"type": "number",
+					"default": 120,
+					"order": 7,
+					"description": "Tempo máximo de espera pela resposta, em segundos"
+				},
+				"claudeGptCommit.claude.path": {
+					"type": "string",
+					"default": "claude",
+					"order": 8,
+					"description": "Comando ou caminho do Claude Code CLI"
+				},
+				"claudeGptCommit.codex.path": {
+					"type": "string",
+					"default": "codex",
+					"order": 9,
+					"description": "Comando ou caminho do Codex CLI"
+				}
+			}
+		}
+	}
+}
