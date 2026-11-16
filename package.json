@@ -2,7 +2,7 @@
 	"name": "claude-gpt-commit-message",
 	"displayName": "AI Commit Message (Claude/GPT)",
 	"description": "Gera mensagens de commit pelo Claude Code (Claude) ou pelo Codex (GPT) instalados, sem chave de API",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"publisher": "flaviowagner",
 	"author": {
 		"name": "Flávio Wagner"

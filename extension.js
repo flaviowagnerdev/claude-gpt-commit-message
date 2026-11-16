@@ -126,9 +126,16 @@ function clean(text) {
 		.join('\n')
 		.replace(/`/g, '')
 		.trim();
-	// Descarta uma eventual linha de introdução terminada em ":" (ex.: "Commit message:").
 	const lines = t.split(/\r?\n/);
-	if (lines.length > 1 && /:\s*$/.test(lines[0]) && !/^\w+(\([^)]*\))?!?:/.test(lines[0])) {
+	// Se houver um cabeçalho Conventional Commits (tipo(escopo)!: descrição), descarta
+	// qualquer texto de introdução que o modelo tenha escrito antes dele.
+	const header = lines.findIndex(l => /^[a-z]+(\([^)\s]*\))?!?: \S/i.test(l.trim()));
+	if (header > 0) {
+		return lines.slice(header).join('\n').trim();
+	}
+	// Sem cabeçalho reconhecível (prompt personalizado): descarta só uma linha de
+	// introdução terminada em ":" (ex.: "Commit message:").
+	if (header < 0 && lines.length > 1 && /:\s*$/.test(lines[0])) {
 		t = lines.slice(1).join('\n').trim();
 	}
 	return t;

@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.1
+
+- Correção: textos de introdução que a IA escreve antes da mensagem (ex.: "Using the commit-message format…") agora são descartados; a mensagem começa sempre no cabeçalho tipo(escopo): descrição.
+- GIFs e prints da documentação regravados com o nome novo.
+
 ## 1.2.0
 
 - Novo nome: **AI Commit Message (Claude/GPT)**.
